@@ -1,39 +1,25 @@
 <template>
   <div class="calculator-container">
     <Display :expression="expression || '0'"></Display>
-    <ButtonPanel @clear-expression="clearExpression"
-                 @update-expression="updateExpression"
-    @eval-expression="evaluateExpression">
-    </ButtonPanel>
+    <ButtonPanel></ButtonPanel>
   </div>
 </template>
 
 <script>
 import Display from "@/components/Display";
 import ButtonPanel from "@/components/ButtonPanel";
-import {ref} from "vue";
+import {useStore} from 'vuex'
+import {computed} from "vue";
 
 export default {
   name: 'CalculatorComponent',
   components: {ButtonPanel, Display},
   props: {},
   setup() {
-    const expression = ref('');
-    const updateExpression = (value) => {
-      expression.value += value;
-    };
-    const clearExpression = ()=>{
-      expression.value = '';
-    }
-    const evaluateExpression = ()=>{
-      console.log(expression.value)
-      expression.value = eval(expression.value)
-    }
+    const store = useStore();
+    const expression = computed(() => store.state.expression);
     return {
       expression,
-      updateExpression,
-      clearExpression,
-      evaluateExpression
     }
   }
 }

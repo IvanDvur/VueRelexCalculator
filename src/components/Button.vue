@@ -1,27 +1,36 @@
 <template>
   <div class="button" @click="handleClick">
-    <h2 class="text-white m-0">{{btnValue}}</h2>
+    <h2 class="text-white m-0">{{ btnValue }}</h2>
   </div>
 </template>
 
 <script>
+import {mapActions, mapMutations} from "vuex";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Button',
   props: {
     btnValue: String
   },
-  methods:{
-    handleClick(){
-      switch (this.btnValue){
+  methods: {
+    ...mapMutations([
+      'updateExpression',
+      'clearExpression'
+    ]),
+    ...mapActions([
+        'evaluateExpressionAsync'
+    ]),
+    handleClick() {
+      switch (this.btnValue) {
         case 'C':
-          this.$emit('clear-click','');
+          this.clearExpression()
           break;
         case '=':
-          this.$emit('eval-click');
+          this.evaluateExpressionAsync()
           break;
         default:
-          this.$emit('btn-click',this.btnValue);
+          this.updateExpression(this.btnValue)
           break;
       }
     },
