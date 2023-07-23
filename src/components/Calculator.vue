@@ -1,6 +1,6 @@
 <template>
   <div class="calculator-container">
-    <Display :expression="expression || '0'"></Display>
+    <Display :expression="expression+'' || '0'"></Display>
     <ButtonPanel></ButtonPanel>
   </div>
 </template>
@@ -9,17 +9,36 @@
 import Display from "@/components/Display";
 import ButtonPanel from "@/components/ButtonPanel";
 import {useStore} from 'vuex'
-import {computed} from "vue";
+import {computed, watch} from "vue";
+import {useRouter} from "vue-router/dist/vue-router";
 
 export default {
   name: 'CalculatorComponent',
   components: {ButtonPanel, Display},
-  props: {},
   setup() {
     const store = useStore();
+
+    const router = useRouter();
+
+    if (localStorage.getItem('expression') && localStorage.getItem('expression')!== store.state.expression) {
+      store.commit('evaluateExpression', localStorage.getItem('expression'));
+    }
+
     const expression = computed(() => store.state.expression);
-    return {
-      expression,
+
+    watch(expression, (newValue) => {
+      localStorage.setItem('expression', newValue);
+    });
+
+    // Получаем значение переданного выражения из параметров маршрута и обновляем состояние хранилища
+    if (router.currentRoute.value.query.expression) {
+      console.log(expression)
+      store.commit('clearExpression')
+      store.commit('updateExpression', router.currentRoute.value.query.expression);
+    }
+
+    return{
+      expression
     }
   }
 }

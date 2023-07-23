@@ -17,6 +17,9 @@
     <Button btn-value="0" class="item_zero"></Button>
     <Button btn-value="."></Button>
     <Button btn-value="-"></Button>
+    <router-link :to="{ name: 'EvalHistory' }" class="historyButton">
+      <h3 class="text-white">Посмотреть историю</h3>
+    </router-link>
   </div>
 </template>
 
@@ -49,6 +52,15 @@ export default {
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 5;
+}
+.historyButton{
+  grid-row: 5/5;
+  grid-column: 1/6;
+  min-height: 75px;
+  background: transparent;
+  border-radius: 5px;
+  border: 3px solid orange;
+  box-shadow: 0 0 5px black;
 }
 
 .item_zero {

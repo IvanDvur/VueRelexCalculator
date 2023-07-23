@@ -1,6 +1,7 @@
 <template>
   <div class="display d-flex align-items-center justify-content-end">
     <h1 class="text-white m-1">{{expression}}</h1>
+<!--    <input class="text-white m-1" placeholder="${{expression}}">-->
   </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
   .display{
     height: 75px;
     /*Контур дисплея*/
-    border: 3px solid #4ab572;
+    border: 4px solid #4ab572;
     border-radius: 10px;
     margin: 1rem;
     box-shadow: 0 0 5px black;

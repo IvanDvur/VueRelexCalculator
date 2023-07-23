@@ -41,7 +41,7 @@ export default {
 <style scoped lang="scss">
 .button {
   border-radius: 5px;
-  border: 3px solid #4ab572; //контур кнопок
+  border: 4px solid #4ab572; //контур кнопок
   min-width: 75px;
   min-height: 75px;
   cursor: pointer;
