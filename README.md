@@ -1,24 +1,13 @@
-# calculator
+# Калькулятор
 
-## Project setup
-```
-npm install
-```
+## Общая информация
+Приложение представляет собой клиентскую часть калькулятора. Поддерживаюстся простейшие арифметические операции
+(сложение, вычитание, деление, умножение), сохранение состояния в local storage, просмотр истории операциий, восстановление 
+состояния определённой операции.
+Вычисления производятся на стороне сервера. Клиентская часть написана на языке JavaScript с использованием фреймворка Vue 3. 
+Управление состоянием приложение осуществляется с помощью библиотеки Vuex. К проекту также подключен Bootstrap и vue-router
+## Запуск и развёртывание
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Клонировать docker-compose.yml расположенный в репозитории серверной части приложения (https://github.com/IvanDvur/RelexCalculatorServer)
+- Из директории с docker-compose.yml выполнить команду docker-compose up, либо воспользоваться средствами IDE
+- После развертывания контейнеров с образами перейти по адресу http://localhost:8080
