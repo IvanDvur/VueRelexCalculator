@@ -11,3 +11,6 @@
 - Клонировать docker-compose.yml расположенный в репозитории серверной части приложения (https://github.com/IvanDvur/RelexCalculatorServer)
 - Из директории с docker-compose.yml выполнить команду docker-compose up, либо воспользоваться средствами IDE
 - После развертывания контейнеров с образами перейти по адресу http://localhost:8080
+
+
+Видео-демонстрация работы приложения доступна по ссылке https://drive.google.com/file/d/1mlKPYwovzZpp3uVXpiVkL1TQGjxvKGAd/view?usp=sharing
